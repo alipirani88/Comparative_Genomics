@@ -4,7 +4,7 @@
 
 
 
-## Getting your data onto Flux and setting up Environment variable
+## Getting your data onto Flux and setting up environment variables
 
 **Log in to Flux**
 
