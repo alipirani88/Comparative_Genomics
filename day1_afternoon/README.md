@@ -202,7 +202,7 @@ Notice the details that were printed out in STDOUT.(How many sites were retained
 
 A consensus fasta sequence will contain alleles from reference sequence at positions where no variants were observed and variants that were observed at positions described in vcf file.
 
-Run these below commands to generatea consensus fasta sequence.
+Run the commands below generate a consensus fasta sequence.
 
 ```
 bgzip Rush_KPC_266__filter_onlysnp.recode.vcf
