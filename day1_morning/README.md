@@ -156,7 +156,7 @@ Check out [this](https://sequencing.qcfail.com/articles/loss-of-base-call-accura
 
 Now we will run Trimmomatic on these raw data to remove low quality reads as well as adapters. 
 
->i. Get an interactive cluster node to start running programs
+>i. Get an interactive cluster node to start running programs (need more memory than last interactive node?)
 
 qsub -I -V -l nodes=1:ppn=4,mem=16000mb,walltime=7:00:00:00 -q fluxod -l qos=flux -A micro612w16_fluxod
 
