@@ -202,7 +202,7 @@ Notice the details that were printed out in STDOUT.(How many sites were retained
 
 A consensus fasta sequence will contain alleles from reference sequence at positions where no variants were observed and variants that were observed at positions described in vcf file.
 
-Run these below commands to generatea consensus fasta sequence.
+Run the commands below generate a consensus fasta sequence.
 
 ```
 bgzip Rush_KPC_266__filter_onlysnp.recode.vcf
@@ -221,7 +221,7 @@ sed -i 's/>.*/>Rush_KPC_266_/g' Rush_KPC_266__consensus.fa
 
 **3. Variant Annotation using snpEff**
 
-Variant annotation is one of the crucial steps in any Variant Calling Pipeline. Most of the variant annotation tools creates their own database or an external one to assign function and predicts the effect of variants on genes. We will try to touch base on some basic steps of annotating variants in our vcf file using snpEff. 
+Variant annotation is one of the crucial steps in any Variant Calling Pipeline. Most of the variant annotation tools create their own database or an external one to assign function and predict the effect of variants on genes. We will try to touch base on some basic steps of annotating variants in our vcf file using snpEff. 
 You can annoate these variants before performing any filtering steps that we did earlier or you can decide to annotate just the final filtered variants. 
 
 snpEff contains database of about 20000 reference genome built from trusted and public sources. Lets check if snpEff contains a database of our reference genome.
