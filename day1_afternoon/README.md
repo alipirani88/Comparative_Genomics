@@ -162,7 +162,7 @@ Here, the below command will add a 'pass_filter' text in the 7th FILTER column f
 1. DP: Depth of reads. More than 15 reads supporting a variant call at these position.
 2. MQ: Root Mean Square Mapping Quality. This provides an estimation of the overall mapping quality of reads supporting a variant call. The root mean square is equivalent to the mean of the mapping qualities plus the standard deviation of the mapping qualities.
 3. QUAL stands for phred-scaled quality score for the assertion made in ALT. High QUAL scores indicate high confidence calls.
-4. FQ stands for consensus quality. A positive value indicates heterozygote and a negative value indicates homozygous. In bacterial analysis, this plays an important role in defining if a genes was duplicated in a particular sample. We will more about later while visualizing our BAM files in IGV.
+4. FQ stands for consensus quality. A positive value indicates heterozygote and a negative value indicates homozygous. In bacterial analysis, this plays an important role in defining if a gene was duplicated in a particular sample. We will more about later while visualizing our BAM files in IGV.
 
 Run this command on raw vcf file Rush_KPC_266__aln_mpileup_raw.vcf.
 
@@ -184,10 +184,10 @@ More Info on VCF format and parameter specifications can be found [here](https:/
 
 >ii. Remove indels and keep only SNPS that passed our filter criteria using [vcftools](http://vcftools.sourceforge.net/man_latest.html vcftools manual):
 
-In most of the phylogenetic analysis, we are trying to find how these samples differ and evolve from the reference/index genome. Many tools that carry out such type of phylogenetic analysis requires a consensus sequences containing only variant calls(SNPs). Though there are few tools that take into consideration both SNPs and Indels and give a greater resolution.
+In most of the phylogenetic analysis, we are trying to find how these samples differ and evolve from the reference/index genome. Many tools that carry out such type of phylogenetic analysis require consensus sequences containing only variant calls(SNPs). Though there are a few tools that take into consideration both SNPs and Indels and give a greater resolution.
 Now we will try to construct a consensus sequence using only SNP calls.
 
-vcftools is a program package that is especially written to work with vcf file formats. It thus saves your precious time by making available all the common operations that you would like to perfome on vcf file using a single command.
+vcftools is a program package that is especially written to work with vcf file formats. It thus saves your precious time by making available all the common operations that you would like to perfom on vcf file using a single command.
 
 Now, Lets remove indels from our final vcf file and keep only variants that passed our filter criteria(positions with pass_filter in their FILTER column).
 
@@ -196,7 +196,7 @@ vcftools --vcf Rush_KPC_266__filter_gatk.vcf --keep-filtered pass_filter --remov
 Rush_KPC_266__filter_onlysnp 
 ```
 
-Notice the details that were printed out in STDOUT.(How many sites were retained out of total site?)
+Notice the details that were printed out in STDOUT.(How many sites were retained out of total sites?)
 
 >iii. Generate Consensus fasta file from filtered variants using vcftools:
 
@@ -221,7 +221,7 @@ sed -i 's/>.*/>Rush_KPC_266_/g' Rush_KPC_266__consensus.fa
 
 **3. Variant Annotation using snpEff**
 
-Variant annotation is one of the crucial steps in any Variant Calling Pipeline. Most of the variant annotation tools creates their own database or an external one to assign function and predicts the effect of variants on genes. We will try to touch base on some basic steps of annotating variants in our vcf file using snpEff. 
+Variant annotation is one of the crucial steps in any Variant Calling Pipeline. Most of the variant annotation tools create their own database or an external one to assign function and predicts the effect of variants on genes. We will try to touch base on some basic steps of annotating variants in our vcf file using snpEff. 
 You can annoate these variants before performing any filtering steps that we did earlier or you can decide to annotate just the final filtered variants. 
 
 snpEff contains database of about 20000 reference genome built from trusted and public sources. Lets check if snpEff contains a database of our reference genome.
