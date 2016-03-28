@@ -67,7 +67,7 @@ qstat –u username
 [[back to top]](https://github.com/alipirani88/Comparative_Genomics/blob/master/day2_morning/README.md)
 [[HOME]](https://github.com/alipirani88/Comparative_Genomics/blob/master/README.md)
 
-The output of an assembler is a set of contigs (contiguous sequences), that are composed of the short reads that we fed in. Once we have an assembly we want to evaluate how good it is. This is somewhat qualitative, but there are some standard metrics that people use to quantify the quality of their assembly. Useful metrics include: i) number of contigs (the fewer the better), ii) N50 (the minimum contig size that at least 50% of your assembly belongs, the bigger the better). In general you want your assembly to be less than 200 contigs and have an N50 greater than 50 Kb, although these numbers of highly dependent on the properties of the assembled genome. 
+The output of an assembler is a set of contigs (contiguous sequences), that are composed of the short reads that we fed in. Once we have an assembly we want to evaluate how good it is. This is somewhat qualitative, but there are some standard metrics that people use to quantify the quality of their assembly. Useful metrics include: i) number of contigs (the fewer the better), ii) N50 (the minimum contig size that at least 50% of your assembly belongs, the bigger the better). In general you want your assembly to be less than 200 contigs and have an N50 greater than 50 Kb, although these numbers are highly dependent on the properties of the assembled genome. 
 
 To evaluate some example assemblies we will use the tool quast. Quast produces a series of metrics describing the quality of your genome assemblies. 
 
@@ -79,12 +79,12 @@ quast.py -o quast sample_264_contigs.fasta sample_266_contigs.fasta
 
 >ii. Explore quast output
 
-QUAST creates output in various format. Now lets check the report.txt file created in quast folder for assembly statistics. Open report.txt using nano.
+QUAST creates output in various format. Now lets check the report.txt file created in the quast folder for assembly statistics. Open report.txt using nano.
 
 ```
 nano quast/report.txt
 ```
-Check the difference between each assembly statistics. 
+Check the difference between each assembly statistic. 
 
 ## Compare assembly to reference genome and Post-assembly genome improvement
 [[back to top]](https://github.com/alipirani88/Comparative_Genomics/blob/master/day2_morning/README.md)
