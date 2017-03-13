@@ -341,7 +341,7 @@ Lets make a seperate folder for the files that we need for visualization and cop
 ```
 
 mkdir Artemis_files
-cp /path-to-reference/KPNIH1.fasta ../KPNIH.gb Rush_KPC_266__aln_marked.bam Rush_KPC_266__aln_marked.bam.bai Rush_KPC_266__filter_gatk_ann.vcf Artemis_files/
+cp /path-to-reference/KPNIH1.fasta /scratch/micro612w16_fluxod/shared/data/day1_after/KPNIH1.gb Rush_KPC_266__aln_marked.bam Rush_KPC_266__aln_marked.bam.bai Rush_KPC_266__filter_gatk_ann.vcf Artemis_files/
 
 ```
 
