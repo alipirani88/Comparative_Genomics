@@ -153,7 +153,7 @@ BAM is the compressed binary equivalent of SAM but are usually quite smaller in 
 The below command will ask samtools to convert SAM format(-S) to BAM format(-b)
 
 ```
-samtools view -Sb Rush_KPC_266__aln.sam > Rush_KPC_266__aln.bam
+samtools view -Sb ../Rush_KPC_266__aln.sam > Rush_KPC_266__aln.bam
 ```
 
 >iii. Sort BAM file using SAMTOOLS:
