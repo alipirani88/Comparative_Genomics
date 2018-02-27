@@ -2,17 +2,17 @@ Day 1 Afternoon
 ===============
 [[HOME]](https://github.com/alipirani88/Comparative_Genomics/blob/master/README.md)
 
-Earlier this morning, We performed some quality control steps on our sequencing data to make it clean and usable for various downstream analysis. Now we will perform our first sequence analysis, specifically variant calling, and map these reads to a reference genome and try to find out the differences between them.
+Earlier this morning we performed some quality control steps on our sequencing data to make it clean and usable for various downstream analyses. Now we will perform our first sequence analysis, specifically variant calling, and map these reads to a reference genome to try to find out the differences between them.
 
-Read Mapping is one of the most common Bioinformatics operations that needs to be carried out on NGS data. The main goal behind read mapping/aligning is to find the best possible reference genome position to which reads could be aligned. Reads are generally mapped to a reference genome sequence that is sufficiently closely related genome to accurately align reads. There are number of tools that can map reads to a reference genome and they differ from each other in algorithm, speed and accuracy. Most of these tools work by first building an index of reference sequence which works like a dictionary for fast search/lookup and then applying an alignment algorithm that uses these index to align short read sequences against the reference. 
+Read mapping is one of the most common Bioinformatics operations that needs to be carried out on next-generation sequencing (NGS) data. The main goal behind read mapping/aligning is to find the best possible reference genome position to which reads can be aligned. Reads are generally mapped to a reference genome sequence that is a sufficiently closely related genome to accurately align the reads. There are number of tools that can map reads to a reference genome and they differ from each other in their algorithm, speed and accuracy. Most of these tools work by first building an index of the reference sequence which works like a dictionary for fast search/lookup and then applying an alignment algorithm that uses these indeces to align short read sequences against the reference. 
 
-These alignment has a vast number of uses, including: 
+This alignment has a vast number of uses, including: 
 
-1) variant/SNP calling: Finding differences between your sequenced organism genome and the reference genome
-2) coverage estimation: If you have sufficient reads to cover each position of reference genome.
-3) gene expression analysis: determining the level of expression of each genes in a genome.
+1) Variant/SNP calling: Finding differences between your sequenced organism's genome and the reference genome
+2) Coverage estimation: If you have sufficient reads to cover each position of reference genome
+3) Gene expression analysis: Determining the level of expression of each gene in a genome (for RNA-seq data)
 
-In this session, we will be covering the important steps that are part of any Read mapping/Variant calling bioinformatics pipleine.
+In this session, we will be covering the important steps that are part of any read mapping/variant calling bioinformatics pipleine.
 
 Read Mapping
 ------------
@@ -21,7 +21,7 @@ Read Mapping
 
 ![alt tag](https://github.com/alipirani88/Comparative_Genomics/blob/master/_img/day1_after/1_1.png)
 
-**1. Navigate to your workshop home directory and copy day1_after directory from shared data directory.**
+**1. Navigate to your workshop home directory and copy the day1_after directory from the shared data directory.**
 
 ```
 wd
@@ -33,20 +33,21 @@ We will be using trimmed clean reads that were obtained after running Trimmomati
 
 **2. Map your reads against a finished reference genome using [BWA](http://bio-bwa.sourceforge.net/bwa.shtml "BWA manual")**
 
-Choosing the right read mapper is crucial and should be based on the type of analysis and data you are working with. Each aligners are meant to be better used with specific types of data, for example:
+Choosing the right read mapper is crucial and should be based on the type of analysis and data you are working with. Each aligner is meant to be used with specific types of data, for example:
 
-For whole genome or whole exome sequencing data: Use BWA for long reads (> 50/100 bp), use Bowtie2 for short reads (< 50/100bp)
-For transcriptomic data (RNA-Seq): use Splice-aware Mapper such as Tophat. (Not applicable for microbial data)
+* For whole genome or whole exome sequencing data: Use BWA for long reads (> 50/100 bp), use Bowtie2 for short reads (< 50/100bp)
 
-Here, we will be using BWA aligner to map the reads against a reference genome, KPNIH1.
+* For transcriptomic data (RNA-Seq): use a splice-aware Mapper such as Tophat. (Not applicable for microbial data)
 
-BWA is one of the several read mappers that are based on Burrows-Wheeler transform algorithm. If you feel like challenging yourselves, you can read BWA paper [here](http://bioinformatics.oxfordjournals.org/content/25/14/1754.short) 
+Here, we will be using the BWA aligner to map the reads against a reference genome, [KPNIH1](https://www.ncbi.nlm.nih.gov/nucleotide/661922017?report=genbank&log$=nuclalign&blast_rank=1&RID=1SV02H5B015&from=4653144&to=4653253).
 
-Read Mapping is a time-consuming step that involves searching the reference and finding the optimal location for the alignment for millions of reads. Creating an index file of a reference sequence for quick lookup/search operations significantly decreases the time required for read alignment. Imagine indexing a genome sequence like the index at the end of a book. If you want to know on which page a word appears or a chapter begins, it is much more efficient to look it up in a pre-built index than going through every page of the book. Similarly, an index of a large DNA sequence allows aligners to rapidly find shorter sequences embedded within it. 
+BWA is one of several read mappers that is based on the [Burrows-Wheeler transform] (https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) algorithm. If you feel like challenging yourselves, you can read the BWA paper [here](http://bioinformatics.oxfordjournals.org/content/25/14/1754.short) 
 
-Note: each read mapper has its own unique way of indexing a reference genome and therefore the reference index created by BWA cannot be used for Bowtie. (Most Bioinformatics tools nowadays require some kind of indexing or reference database creation)
+Read mapping is a time-consuming step that involves searching the reference and finding the optimal location for each read alignment for millions of reads. Creating an index file of a reference sequence for quick lookup/search operations significantly decreases the time required for read alignment. Imagine indexing a genome sequence like the index at the end of a book. If you want to know on which page a word appears or a chapter begins, it is much more efficient to look it up in a pre-built index than going through every page of the book. Similarly, an index of a large DNA sequence allows aligners to rapidly find shorter sequences embedded within it. 
 
->i. To create BWA index of Reference, you need to run following command.
+Note: each read mapper has its own unique way of indexing a reference genome and therefore the reference index created by BWA cannot be used for Bowtie. (Most Bioinformatics tools nowadays require some kind of indexing or reference database creation.)
+
+>i. To create a BWA index of the reference, you need to run the following command.
 
 Start a flux interactive session
 
@@ -55,7 +56,7 @@ iflux
 ```
 
 
-Navigate to day1_after folder that you recently copied and create a new folder Rush_KPC_266_varcall_result for saving this exercise's output.
+Navigate to the `day1_after` folder that you recently copied and create a new folder called  `Rush_KPC_266_varcall_result` for saving this exercise's output.
 
 ```
 d1a
@@ -68,26 +69,26 @@ mkdir Rush_KPC_266_varcall_result
 
 ```
 
-Create bwa index for the reference genome. 
+Create a bwa index for the reference genome. 
 
 ```
 bwa index KPNIH1.fasta
 ```
  
-Also go ahead and create fai index file using samtools required by GATK in later downstream steps.
+Also go ahead and create an fai index file using samtools, which is required by GATK in later downstream steps.
 
 ```
 samtools faidx KPNIH1.fasta
 ```
 
->ii. Align reads to reference and redirect the output into SAM file
+>ii. Align the reads to the reference and redirect the output into SAM file
 
 Quoting BWA:
 "BWA consists of three algorithms: BWA-backtrack, BWA-SW and BWA-MEM. The first algorithm is designed for Illumina sequence reads up to 100bp, while the rest two for longer sequences ranged from 70bp to 1Mbp. BWA-MEM and BWA-SW share similar features such as long-read support and split alignment, but BWA-MEM, which is the latest, is generally recommended for high-quality queries as it is faster and more accurate. BWA-MEM also has better performance than BWA-backtrack for 70-100bp Illumina reads."
 
-For other algorithms employed by BWA, you can refer to BWA [manual](http://bio-bwa.sourceforge.net/bwa.shtml "BWA manual")
+For other algorithms employed by BWA, you can refer to the [BWA manual](http://bio-bwa.sourceforge.net/bwa.shtml "BWA manual")
 
-Now lets align both left and right end reads to our reference using BWA alignment algorithm 'mem'. 
+Now lets align both left and right end reads to our reference using the BWA alignment algorithm 'mem'. 
 
 ```
 
@@ -97,13 +98,13 @@ bwa mem -M -R "@RG\tID:96\tSM:Rush_KPC_266_1_combine.fastq.gz\tLB:1\tPL:Illumina
 
 Read group tells aligners/other tools that certain reads were sequenced together on a specific lane. If you have multiplexed samples in a single lane, you will get multiple samples in a single read group. If you sequenced the same sample in several lanes, you will have multiple read groups for the same sample.
 
-This string with -R flag says that all reads belongs to ID:96 and library LB:1; with sample name SM:Rush_KPC_266_1_combine.fastq.gz and was sequenced on illumina platform PL:Illumina.
+The string with the -R flag says that all reads belongs to ID:96 and library LB:1; with sample name SM:Rush_KPC_266_1_combine.fastq.gz and was sequenced on illumina platform PL:Illumina.
 
-You can extract this information from fastq read header. (@M02127:96:000000000-AG04W:1:1101:13648:1481 1:N:0:44)
+You can extract this information from the fastq read header. (@M02127:96:000000000-AG04W:1:1101:13648:1481 1:N:0:44)
 
 **3. SAM/BAM manipulation and variant calling using [Samtools](http://www.htslib.org/doc/samtools.html "Samtools Manual")**
 
->i. Change directory to results folder and look for BWA output:
+>i. Change directory to the results folder and look for the BWA output:
 
 ```
 cd Rush_KPC_266_varcall_result
@@ -111,9 +112,9 @@ cd Rush_KPC_266_varcall_result
 ls
 ```
 
-The output of BWA and most of the short-reads aligners is a SAM file. SAM format is considered as the standard output for most read aligners and stands for Sequence Alignment/Map format. It is a TAB-delimited format that describes how each reads were aligned to the reference sequence. 
+The output of BWA and most of the short-reads aligners is a SAM file. SAM format is considered the standard output for most read aligners and stands for Sequence Alignment/Map format. It is a TAB-delimited format that describes how the reads were aligned to the reference sequence. 
 
-Lets explore first few lines of .sam file.
+Lets explore first few lines of the .sam file.
 
 ```
 
@@ -132,27 +133,27 @@ M02127:96:000000000-AG04W:1:1101:23094:1725     99      gi|661922017|gb|CP008827
 
 ```
 
-The lines starting with "@" is a header section and contains information about reference genome, sample read group and the aligner command that was used for aligning the samples. The header section is followed by an alignment section information for each read. It contains 11 columns and an optional TAG option.
+The lines starting with "@" are a header section and contain information about the reference genome, sample read group and the aligner command that was used for aligning the samples. The header section is followed by an alignment section information for each read. It contains 11 columns and an optional TAG option.
 
-Detailed information about these 11 columns can be obtained from this [pdf](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwizkvfAk9rLAhXrm4MKHVXxC9kQFggdMAA&url=https%3A%2F%2Fsamtools.github.io%2Fhts-specs%2FSAMv1.pdf&usg=AFQjCNHFmjxTXKnxYqN0WpIFjZNylwPm0Q) document.
+Detailed information about these 11 columns can be obtained from [this pdf](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwizkvfAk9rLAhXrm4MKHVXxC9kQFggdMAA&url=https%3A%2F%2Fsamtools.github.io%2Fhts-specs%2FSAMv1.pdf&usg=AFQjCNHFmjxTXKnxYqN0WpIFjZNylwPm0Q) document.
 
-The second column consists of coded bitwise flags where each code flag carries important information about the alignment. Open [this](https://broadinstitute.github.io/picard/explain-flags.html) site and enter the flag "99" to find out what it stands for.
+The second column consists of coded bitwise flags where each code flag carries important information about the alignment. Open [this site](https://broadinstitute.github.io/picard/explain-flags.html) and enter the flag "99" to find out what it stands for.
 
-The last section "NM:i:2  MD:Z:161G77A10  AS:i:240 XS:i:0  RG:Z:96" is an optional tag section and varies for different aligners(specifications based on aligners). 
+The last section "NM:i:2  MD:Z:161G77A10  AS:i:240 XS:i:0  RG:Z:96" is an optional tag section and varies for different aligners (specifications based on aligners). 
 
 Here, 
 
-NM tag tells number of changes necessary to make it equal to the reference(2 changes)
+* NM tag tells the number of changes necessary to make it equal to the reference (2 changes)
 
-MD tag tells you what positions in the read alignment are different from reference base and is used by variant callers to call SNP's. For example, The tag "MD:Z:161G77A10" implies that position 162 in the read carries a different base whereas the reference genome carries base "G"
+* MD tag tells you what positions in the read alignment are different from the reference base and is used by variant callers to call single nucleotide polymorphisms (SNPs). For example, the tag "MD:Z:161G77A10" implies that position 162 in the read carries a different base whereas the reference genome carries base "G".
 
-AS is an alignment score and XS:i:0 is an suboptimal alignment score.
+* AS is an alignment score and XS:i:0 is a suboptimal alignment score.
 
 >ii. Convert SAM to BAM using SAMTOOLS:
 
-BAM is the compressed binary equivalent of SAM but are usually quite smaller in size than SAM format. Since, parsing through a SAM format is slow, Most of the downstream tools require SAM file to be converted to BAM so that it can be easily sorted and indexed.
+BAM is the compressed binary equivalent of SAM but is usually quite smaller in size than SAM format. Since parsing through a SAM format is slow, most of the downstream tools require the SAM file to be converted to a BAM file so that it can be easily sorted and indexed.
 
-The below command will ask samtools to convert SAM format(-S) to BAM format(-b)
+The below command will ask samtools to convert SAM format (`-S`) to BAM format (`-b`)
 
 ```
 samtools view -Sb Rush_KPC_266__aln.sam > Rush_KPC_266__aln.bam
@@ -162,25 +163,25 @@ samtools view -Sb Rush_KPC_266__aln.sam > Rush_KPC_266__aln.bam
 
 Most of the downstream tools such as GATK requires your BAM file to be indexed and sorted by reference genome positions.
 
-Now before indexing this BAM file, we will sort the data by positions(default) using samtools. Some RNA Seq/Gene expression tools require it to be sorted by read name which is achieved by passing -n flag.
+Now before indexing this BAM file, we will sort the data by positions (default) using samtools. Some RNA Seq/Gene expression tools require it to be sorted by read name which is achieved by passing `-n` flag.
 
 ```
 samtools sort Rush_KPC_266__aln.bam Rush_KPC_266__aln_sort
 ```
 
-**4. Mark duplicates(PCR optical duplicates) and remove them using [PICARD](http://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicates "Picard MarkDuplicates")**
+**4. Mark duplicates (PCR optical duplicates) and remove them using [PICARD](http://broadinstitute.github.io/picard/command-line-overview.html#MarkDuplicates "Picard MarkDuplicates")**
 
-Illumina sequencing involves PCR amplification of adapter ligated DNA fragments so that we have enough starting material for sequencing. Therefore, some amount of duplicates are inevitable. Ideally, you amplify upto ~65 fold(4% reads) but higher rates of PCR duplicates e.g. 30% arise when people have too little starting material such that greater amplification of the library is needed or some smaller fragments which are easier to PCR amplify, end up over-represented.
+Illumina sequencing involves PCR amplification of adapter-ligated DNA fragments so that we have enough starting material for sequencing. Therefore, some amount of duplicates are inevitable. Ideally, you amplify up to ~65-fold and are about 4% of reads are duplicates. However, higher rates of PCR duplicates, e.g. 30%, arise when people have too little starting material such that greater amplification of the library is needed or some smaller fragments which are easier to PCR amplify end up over-represented.
 
-For an in-depth explanation about how PCR duplicates arise in sequencing, please refer to this interesting [blog](http://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/)
+For an in-depth explanation about how PCR duplicates arise in sequencing, please refer to this interesting [blog post](http://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/).
 
-Picard identifies duplicates by searching reads that have same start position on reference or in PE reads same start for both ends. It will choose a representative from each group of duplicate reads based on best base quality scores and other criteria and retain it while removing other duplicates. This step plays a significant role in removing false positive variant calls(such as sequencing error) during variant calling that are represented by PCR duplicate reads.
+Picard identifies duplicates by searching for reads that have same start position on the reference or in paired-end (PE) reads same start for both ends. It will choose a representative from each group of duplicate reads based on best base quality scores and other criteria and retain it while removing other duplicates. This step plays a significant role in removing false positive variant calls (such as sequencing error) during variant calling that are represented by PCR duplicate reads.
 
 ![alt tag](https://github.com/alipirani88/Comparative_Genomics/blob/master/_img/day1_after/picard.png)
 
->i. Create a dictionary for reference fasta file required by PICARD
+>i. Create a dictionary for the reference fasta file required by PICARD
 
-Make sure you are in Rush_KPC_266_varcall_result directory and are giving proper reference genome path (day1_after directory).
+Make sure you are in the `Rush_KPC_266_varcall_result` directory and are giving the proper reference genome path (`day1_after` directory).
 
 ```
 
@@ -188,7 +189,7 @@ java -jar /scratch/micro612w18_fluxod/shared/bin/picard-tools-1.130/picard.jar C
 
 ```
 
->ii. Run PICARD for removing duplicates.
+>ii. Run PICARD to remove duplicates.
 
 ```
 
@@ -196,18 +197,18 @@ java -jar /scratch/micro612w18_fluxod/shared/bin/picard-tools-1.130/picard.jar M
 
 ```
 
-The output of Picard remove duplicate step is a new bam file "Rush_KPC_266__aln_marked.bam" without PCR duplicates.
+The output of the Picard remove duplicate step is a new bam file "Rush_KPC_266__aln_marked.bam" without PCR duplicates.
 
 You will need to index this new marked.bam file for further processing.
 
->iii. Index these marked bam file again using SAMTOOLS(For input in Artemis later)
+>iii. Index these marked bam file again using SAMTOOLS (For input into Artemis later)
 
 ```
 samtools index Rush_KPC_266__aln_marked.bam
 ```
 
 Open the markduplicates metrics file and glance through the number and percentage of PCR duplicates removed. 
-For more details about each metrics in a metrics file, please refer [this](https://broadinstitute.github.io/picard/picard-metric-definitions.html#DuplicationMetrics)
+For more details about each metrics in a metrics file, please refer [this link](https://broadinstitute.github.io/picard/picard-metric-definitions.html#DuplicationMetrics).
 
 ```
 nano Rush_KPC_266__markduplicates_metrics
@@ -220,20 +221,20 @@ less Rush_KPC_266__markduplicates_metrics
 Generate Alignment Statistics
 -----------------------------
 
-Often, While analyzing sequencing data, we are required to make sure that our analysis steps are correct. Some statistics about our analysis will help us in making that decision. So Lets try to get some statistics about various outputs that were created using the above steps and check if everything makes sense.
+Often while analyzing sequencing data, we are required to make sure that our analysis steps are correct. Some statistics about our analysis will help us in making that decision. So let's try to get some statistics about various outputs that were created using the above steps and check if everything makes sense.
 
 >i. Collect Alignment statistics using Picard
 
-Run the below command on your marked.bam file
+Run the below command on your `marked.bam` file
 
 ```
 
 java -jar /scratch/micro612w18_fluxod/shared/bin/picard-tools-1.130/picard.jar CollectAlignmentSummaryMetrics R=../KPNIH1.fasta I=Rush_KPC_266__aln_marked.bam O=AlignmentSummaryMetrics.txt
 
 ```
-Open the file AlignmentSummaryMetrics.txt and explore various statistics. It will generate various statistics and the definition for each can be found [here](http://broadinstitute.github.io/picard/picard-metric-definitions.html#AlignmentSummaryMetrics)
+Open the file `AlignmentSummaryMetrics.txt` and explore various statistics. It will generate various statistics and the definition for each can be found [here](http://broadinstitute.github.io/picard/picard-metric-definitions.html#AlignmentSummaryMetrics).
 
-The file AlignmentSummaryMetrics.txt contains many columns and at times it becomes difficult to extract information from a particular column if we dont know the exact column number. Run the below unix gem to print column name with its number.
+The file `AlignmentSummaryMetrics.txt` contains many columns and at times it becomes difficult to extract information from a particular column if we don't know the exact column number. Run the below Unix gem to print column name with its number.
 
 ```
 grep 'CATEGORY' AlignmentSummaryMetrics.txt | tr '\t' '\n' | cat --number
@@ -249,11 +250,11 @@ awk -F'\t' '{print $7}' AlignmentSummaryMetrics.txt
 grep -v '#' AlignmentSummaryMetrics.txt | cut -f7
 ```
 
-Try to explore other statistics and their definitions from Picard AlignmentSummaryMetrics [link](http://broadinstitute.github.io/picard/picard-metric-definitions.html#AlignmentSummaryMetrics)
+Try to explore other statistics and their definitions from the Picard AlignmentSummaryMetrics [link](http://broadinstitute.github.io/picard/picard-metric-definitions.html#AlignmentSummaryMetrics).
 
 >ii. Estimate read coverage/read depth using Picard
 
-Read coverage/depth describes the average number of reads that align to, or "cover," known reference bases. The sequencing depth is one of the most crucial issue in the design of next-generation sequencing experiments. This [paper](https://www.nature.com/articles/nrg3642) review current guidelines and precedents on the issue of coverage, as well as their underlying considerations, for four major study designs, which include de novo genome sequencing, genome resequencing, transcriptome sequencing and genomic location analyses 
+Read coverage/depth describes the average number of reads that align to, or "cover," known reference bases. The sequencing depth is one of the most crucial issue in the design of next-generation sequencing experiments. [This paper](https://www.nature.com/articles/nrg3642) reviews current guidelines and precedents on the issue of coverage, as well as their underlying considerations, for four major study designs, which include *de novo* genome sequencing, genome resequencing, transcriptome sequencing and genomic location analyses.
 
 After read mapping, it is important to make sure that the reference bases are represented by enough read depth before making any inferences such as variant calling.
 
