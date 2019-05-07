@@ -233,6 +233,8 @@ Lets have a look at one of the Bad Illumina data example [here](http://www.bioin
 [[back to top]](https://github.com/alipirani88/Comparative_Genomics/blob/master/day1_morning/README.md)
 [[HOME]](https://github.com/alipirani88/Comparative_Genomics/blob/master/README.md)
 
+Variant Calling for colistin resistant Klebsiella pneumoniae
+-------------------------------------------------------------
 Earlier, We performed some quality control steps on our sequencing data to make it clean and usable for various downstream analysis. Now we will perform our first sequence analysis, specifically variant calling, and map these reads to a reference genome and try to find out the differences between them.
 
 Read Mapping is one of the most common Bioinformatics operations that needs to be carried out on NGS data. The main goal behind read mapping/aligning is to find the best possible reference genome position to which reads could be aligned. Reads are generally mapped to a reference genome sequence that is sufficiently closely related genome to accurately align reads. There are number of tools that can map reads to a reference genome and they differ from each other in algorithm, speed and accuracy. Most of these tools work by first building an index of reference sequence which works like a dictionary for fast search/lookup and then applying an alignment algorithm that uses these index to align short read sequences against the reference. 
@@ -245,9 +247,6 @@ These alignment has a vast number of uses, including:
 
 In this session, we will be covering the important steps that are part of any Read mapping/Variant calling bioinformatics pipleine.
 
-
-Variant Calling for Collistin resistant Klebsiella pneumoniae
--------------------------------------------------------------
 
 At the end of our morning session, we submitted a variant calling job to run all the variant calling steps on PCMP_H326 genome.
 
