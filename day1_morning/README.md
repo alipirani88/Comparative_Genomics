@@ -654,6 +654,20 @@ nano variant_call.sbat
 
 ```
 
+***Note: An error came up while testing the availability of python packages. Before submitting the script, try running `parse_snpEff.py` under the scripts folder to check if the script runs without any error:***
+
+```
+python scripts/parse_snpEff.py -h
+```
+
+If the script runs without any error then you are good to move forward with submitting the slurm script. But if the script raises an error; try installing these two packages with pip:
+
+```
+pip install PyVCF --user
+pip install biopython --user
+```
+
+
 Once you are done editing the slurm script, you can go ahead and submit the job. Make sure you are submitting the job from variant_calling folder and you have activated the conda environment. We will go through each of the variant calling result steps folder and explore the results in afternoon session. 
 
 ```
