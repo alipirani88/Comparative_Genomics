@@ -74,9 +74,9 @@ cp ~/.bashrc ~/bashrc_backup
 
 ```
 	
-> ***ii. Open ~/.bashrc file using any text editor and add the following lines to your .bashrc file.***
+> ***ii. Open ~/.bashrc file using any text editor and add the following lines at the end of your .bashrc file.***
 
-
+***Note: Replace "username" under alias shortcuts with your own umich "uniqname".***
 
 ```
 ##Micro612 Workshop ENV
@@ -96,38 +96,10 @@ alias d3a='cd /scratch/micro612w21_class_root/micro612w21_class/username/day3pm'
 #module load Bioinformatics
 #module load perl-modules
 
-#Perl Libraries
-export PERL5LIB=/scratch/micro612w21_class_root/micro612w21_class/shared/bin/PAGIT/lib:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/vcftools_0.1.12b/perl:$PERL5LIB
-export PERL5LIB=/scratch/micro612w21_class_root/micro612w21_class/shared/perl_libs:$PERL5LIB
+
 
 #Bioinformatics Tools
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/ncbi-blast-2.7.1+/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/MultiQC/build/scripts-2.7/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/mauve_snapshot_2015-02-13/linux-x64/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/vcftools_0.1.12b/perl/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/tabix-0.2.6/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/bwa-0.7.12/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/Trimmomatic/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/bcftools-1.2/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/samtools-1.2/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/sratoolkit/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/Spades/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/FastQC/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/GenomeAnalysisTK-3.3-0/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/picard-tools-1.130/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/qualimap_v2.1/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/vcftools_0.1.12b/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/snpEff/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/PAGIT/ABACAS/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/blast-2.2.26/bin/
 export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/quast/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/MUMmer3.23/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/fastq_screen_v0.5.2/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/prokka-1.11/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/LS-BSR-master/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/bowtie2-2.2.6/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/mcl-14-137/src/alien/oxygen/src/
-
 
 ```
 
@@ -167,7 +139,7 @@ You should be in your workshop working directory that is /scratch/micro612w21_cl
 
 > ***v. Set up a conda environment using a YML file***
 
-The YML file - micro612.yml required for generating the conda environment is located here:
+The YML file - `micro612.yml` required for generating the conda environment is located here:
 
 ```
 /scratch/micro612w21_class_root/micro612w21_class/shared/conda_envs/
@@ -187,6 +159,13 @@ conda env create -f /scratch/micro612w21_class_root/micro612w21_class/shared/con
 
 # Load your environment and use the tools
 conda activate micro612
+
+# Check if the tools were properly installed by conda and are callable from your environment 
+bash /scratch/micro612w21_class_root/micro612w21_class/shared/conda_envs/check_micro612_installation.sh 
+
+# Problem installing PyVCF and biopython with Conda channels
+pip install PyVCF --user
+pip install biopython --user
 
 # Update one of the databases that you would need in one of the Kraken exercises 
 ktUpdateTaxonomy.sh
@@ -626,6 +605,8 @@ We will come back later to the script to understand some of the basics of shell 
 - Execute the following commands to copy files for this afternoon’s exercises to your home directory:
 
 ```
+wd
+
 
 cp -r /scratch/micro612w21_class_root/micro612w21_class/shared/data/day1pm/ ./
 
@@ -672,6 +653,22 @@ The day1pm directory also contains a slurm script called variant_call.sbat. We w
 
 ```
 
+***Note: An error came up while testing the availability of python packages. Before submitting the script, try running `parse_snpEff.py` under the scripts folder to check if the script runs without any error:***
+
+```
+python scripts/parse_snpEff.py -h
+```
+
+If the script runs without any error then you are good to move forward with submitting the slurm script. But if the script raises an error; try installing these two packages with pip:
+
+```
+pip install PyVCF --user
+pip install biopython --user
+```
+
+
+Once you are done editing the slurm script, you can go ahead and submit the job. Make sure you are submitting the job from variant_calling folder and you have activated the conda environment. We will go through each of the variant calling result steps folder and explore the results in afternoon session. 
+
 Change the EMAIL_ADDRESS section (#SBATCH --mail-user=) of the slurm script to your email address using your favorite text editor (we learned nano in the pre-workshop).
 
 ```
@@ -679,8 +676,6 @@ Change the EMAIL_ADDRESS section (#SBATCH --mail-user=) of the slurm script to y
 nano variant_call.sbat
 
 ```
-
-Once you are done editing the slurm script, you can go ahead and submit the job. Make sure you are submitting the job from variant_calling folder and you have activated the conda environment. We will go through each of the variant calling result steps folder and explore the results in afternoon session. 
 
 ```
 conda activate micro612

@@ -1,6 +1,6 @@
 
 
-Day 2 AM
+Day 2 Morning
 =============
 [[HOME]](https://github.com/alipirani88/Comparative_Genomics/blob/master/README.md)
 
