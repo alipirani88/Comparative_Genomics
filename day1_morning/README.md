@@ -598,6 +598,8 @@ We will come back later to the script to understand some of the basics of shell 
 - Execute the following commands to copy files for this afternoon’s exercises to your home directory:
 
 ```
+wd
+
 
 cp -r /scratch/micro612w21_class_root/micro612w21_class/shared/data/day1pm/ ./
 
