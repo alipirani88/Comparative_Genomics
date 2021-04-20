@@ -160,6 +160,9 @@ conda env create -f /scratch/micro612w21_class_root/micro612w21_class/shared/con
 # Load your environment and use the tools
 conda activate micro612
 
+# Check if the tools were properly installed by conda and are callable from your environment 
+bash /scratch/micro612w21_class_root/micro612w21_class/shared/conda_envs/check_micro612_installation.sh 
+
 # Problem installing PyVCF and biopython with Conda channels
 pip install PyVCF --user
 pip install biopython --user
