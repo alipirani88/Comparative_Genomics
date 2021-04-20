@@ -32,7 +32,8 @@ GOTO: http://comparative-genomics.readthedocs.io/en/latest/index.html#
 
 You can find a folder named after your username/uniqname; for example if my uniqname is `apirani`, I will be working in `/scratch/micro612w21_class_root/micro612w21_class/apirani` This would be the directory that workshop attendees will be working from.
 
-***A read the doc website is available for this Github README pages that will display an index to its left for faster access to the workshop document. However, these pages will not be updated during the workshop hours. To access the website, use the link below***
+***A Read the Docs technical documentation is available for the workshop's README text that will display an index to its left for faster access. However, this website will not be updated during workshop hours. To access the website, use the link below***
+
 
 https://comparative-genomics.readthedocs.io/en/latest/index.html
 
