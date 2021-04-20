@@ -96,38 +96,10 @@ alias d3a='cd /scratch/micro612w21_class_root/micro612w21_class/username/day3pm'
 #module load Bioinformatics
 #module load perl-modules
 
-#Perl Libraries
-export PERL5LIB=/scratch/micro612w21_class_root/micro612w21_class/shared/bin/PAGIT/lib:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/vcftools_0.1.12b/perl:$PERL5LIB
-export PERL5LIB=/scratch/micro612w21_class_root/micro612w21_class/shared/perl_libs:$PERL5LIB
+
 
 #Bioinformatics Tools
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/ncbi-blast-2.7.1+/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/MultiQC/build/scripts-2.7/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/mauve_snapshot_2015-02-13/linux-x64/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/vcftools_0.1.12b/perl/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/tabix-0.2.6/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/bwa-0.7.12/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/Trimmomatic/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/bcftools-1.2/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/samtools-1.2/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/sratoolkit/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/Spades/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/FastQC/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/GenomeAnalysisTK-3.3-0/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/picard-tools-1.130/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/qualimap_v2.1/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/vcftools_0.1.12b/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/snpEff/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/PAGIT/ABACAS/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/blast-2.2.26/bin/
 export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/quast/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/MUMmer3.23/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/fastq_screen_v0.5.2/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/prokka-1.11/bin/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/LS-BSR-master/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/bowtie2-2.2.6/
-export PATH=$PATH:/scratch/micro612w21_class_root/micro612w21_class/shared/bin/mcl-14-137/src/alien/oxygen/src/
-
 
 ```
 
