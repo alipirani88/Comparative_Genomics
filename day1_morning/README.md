@@ -160,6 +160,10 @@ conda env create -f /scratch/micro612w21_class_root/micro612w21_class/shared/con
 # Load your environment and use the tools
 conda activate micro612
 
+# Problem installing PyVCF and biopython with Conda channels
+pip install PyVCF --user
+pip install biopython --user
+
 # Update one of the databases that you would need in one of the Kraken exercises 
 ktUpdateTaxonomy.sh
 ```
