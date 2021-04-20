@@ -28,14 +28,23 @@ GOTO: http://comparative-genomics.readthedocs.io/en/latest/index.html#
 
 -->
 
+Workshop working directory
+--------------------------
+
 ***The Workshop directory on Great Lakes that you will be working in is - `/scratch/micro612w21_class_root/micro612w21_class/`***
 
 You can find a folder named after your username/uniqname; for example if my uniqname is `apirani`, I will be working in `/scratch/micro612w21_class_root/micro612w21_class/apirani` This would be the directory that workshop attendees will be working from.
 
+Workshop Read the Docs technical documentation website
+------------------------------------------------------
+
 ***A Read the Docs technical documentation is available for the workshop's README text that will display an index to its left for faster access. However, this website will not be updated during workshop hours. To access the website, use the link below***
 
-
 https://comparative-genomics.readthedocs.io/en/latest/index.html
+
+Workshop Slides
+---------------
+https://github.com/alipirani88/Comparative_Genomics/blob/master/Presentation_slides/2021-04-21_lecture_slides.pdf
 
 Workshop
 --------
