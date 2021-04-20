@@ -1,5 +1,5 @@
-Day 2 PM
-========
+Day 2 Afternoon
+===============
 [[HOME]](https://github.com/alipirani88/Comparative_Genomics/blob/master/README.md)
 
 Goal
