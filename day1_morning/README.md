@@ -74,7 +74,7 @@ cp ~/.bashrc ~/bashrc_backup
 
 ```
 	
-> ***ii. Open ~/.bashrc file using any text editor and add the following lines to your .bashrc file.***
+> ***ii. Open ~/.bashrc file using any text editor and add the following lines at the end of your .bashrc file.***
 
 
 
