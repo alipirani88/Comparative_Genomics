@@ -46,8 +46,8 @@ Workshop Slides
 ---------------
 https://github.com/alipirani88/Comparative_Genomics/blob/master/Presentation_slides/2021-04-21_lecture_slides.pdf
 
-Workshop
---------
+Workshop Overview
+-----------------
 
 [Day 1 Morning](https://github.com/alipirani88/Comparative_Genomics/blob/master/day1_morning/README.md)
 ***
