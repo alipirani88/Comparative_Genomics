@@ -76,7 +76,7 @@ cp ~/.bashrc ~/bashrc_backup
 	
 > ***ii. Open ~/.bashrc file using any text editor and add the following lines at the end of your .bashrc file.***
 
-
+***Note: Replace "username" under alias shortcuts with your own umich "uniqname".***
 
 ```
 ##Micro612 Workshop ENV
