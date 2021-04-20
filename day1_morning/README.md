@@ -646,14 +646,6 @@ The day1pm directory also contains a slurm script called variant_call.sbat. We w
 
 ```
 
-Change the EMAIL_ADDRESS section (#SBATCH --mail-user=) of the slurm script to your email address using your favorite text editor (we learned nano in the pre-workshop).
-
-```
-
-nano variant_call.sbat
-
-```
-
 ***Note: An error came up while testing the availability of python packages. Before submitting the script, try running `parse_snpEff.py` under the scripts folder to check if the script runs without any error:***
 
 ```
@@ -669,6 +661,14 @@ pip install biopython --user
 
 
 Once you are done editing the slurm script, you can go ahead and submit the job. Make sure you are submitting the job from variant_calling folder and you have activated the conda environment. We will go through each of the variant calling result steps folder and explore the results in afternoon session. 
+
+Change the EMAIL_ADDRESS section (#SBATCH --mail-user=) of the slurm script to your email address using your favorite text editor (we learned nano in the pre-workshop).
+
+```
+
+nano variant_call.sbat
+
+```
 
 ```
 conda activate micro612
