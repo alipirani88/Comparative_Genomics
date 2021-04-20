@@ -139,7 +139,7 @@ You should be in your workshop working directory that is /scratch/micro612w21_cl
 
 > ***v. Set up a conda environment using a YML file***
 
-The YML file - micro612.yml required for generating the conda environment is located here:
+The YML file - `micro612.yml` required for generating the conda environment is located here:
 
 ```
 /scratch/micro612w21_class_root/micro612w21_class/shared/conda_envs/
