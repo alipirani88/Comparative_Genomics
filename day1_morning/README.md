@@ -79,6 +79,21 @@ cp ~/.bashrc ~/bashrc_backup
 ***Note: Replace "username" under alias shortcuts with your own umich "uniqname".***
 
 ```
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/sw/arcts/centos7/python3.7-anaconda/2019.07/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/sw/arcts/centos7/python3.7-anaconda/2019.07/etc/profile.d/conda.sh" ]; then
+        . "/sw/arcts/centos7/python3.7-anaconda/2019.07/etc/profile.d/conda.sh"
+    else
+        export PATH="/sw/arcts/centos7/python3.7-anaconda/2019.07/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 ##Micro612 Workshop ENV
 
 #Aliases
