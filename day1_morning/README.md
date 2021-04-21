@@ -107,7 +107,7 @@ alias d3m='cd /scratch/micro612w21_class_root/micro612w21_class/username/day3am'
 alias d3a='cd /scratch/micro612w21_class_root/micro612w21_class/username/day3pm'
 
 
-#Great Lakes Modules
+#Great Lakes Modules. They should remain commented for the day1 session.
 #module load Bioinformatics
 #module load perl-modules
 
