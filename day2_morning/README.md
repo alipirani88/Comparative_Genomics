@@ -470,7 +470,7 @@ Read files into ACT
 Go to File on top left corner of ACT window -> open 
 Sequence file 1 = FPR3757.gb 
 Comparison file 1  = SRR5244781_contigs_ordered.crunch 
-Sequence file 2  = SRR5244781_contigs_ordered.gbf
+Sequence file 2  = SRR5244781_contigs_ordered.gbk
 ```
 
 - Play around with ACT to see what types of genes are unique to the MSSA genome SRR5244781 compared to the MRSA genome!
