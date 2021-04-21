@@ -414,13 +414,15 @@ From our ACT comparison of our assembly and the reference we can clearly see tha
 
 Earlier, we submitted a prokka job which should be completed by now. In this exercise, we will go over the prokka results and copy annotation files to our local system that we can then use for ACT visualization.
 
-> ***i.  Use scp or cyberduck to get Prokka annotated genome on your laptop. Dont forget to change username in the below command
+> i.  Use scp or cyberduck to get Prokka annotated genome on your laptop. Dont forget to change username in the below command
 
 
 ```
 cd SRR5244781_prokka
 
 ls 
+
+#Copy SRR5244781_prokka folder to your local system
 
 scp -r username@flux-xfer.arc-ts.umich.edu:/scratch/micro612w16_fluxod/username/day2am/SRR5244781_prokka/ /path-to-local-ACT_contig_comparison-directory/
 
