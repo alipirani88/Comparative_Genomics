@@ -21,16 +21,9 @@ For the pan-genome analysis, we will be looking at four closely related *Acineto
 Navigate to the `day2pm` directory and load the conda environment you created before break for this session:
 
 
-```  
+```
 
-cd /scratch/micro612w21_class_root/micro612w21_class/username
-
-or
-
-wd
-
-cp -r /scratch/micro612w21_class_root/micro612w21_class/shared/data/day2pm/ ./
-
+d2a
 
 ```
 
