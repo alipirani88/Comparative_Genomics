@@ -241,7 +241,7 @@ Row_annotations <- cbind(annots, annots_mlst)
 Row_annotations$ST = as.character(Row_annotations$ST)
 
 # Assign colors to Sequence Types
-annoCol <- list(ST=c(“11”=“blue”, “221”=“red”, “230”=“orange”, “258”=“grey”))
+annoCol <- list(ST=c("11"="blue", "221"="red", "230"="orange", "258"="grey"))
 
 #create new heatmap with source and mlst
 pheatmap(ariba_full_match,annotation_row = Row_annotations, annotation_colors = annoCol)
