@@ -518,7 +518,7 @@ wd
 
 cp -r /scratch/micro612w21_class_root/micro612w21_class/shared/data/day2pm/ ./
 
-# Deactivate current conda 
+# Deactivate current conda environment
 conda deactivate 
 
 # Log out and log back in please
