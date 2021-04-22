@@ -122,7 +122,7 @@ Since Prokka annotation is a time intensive run, we will submit an annotation jo
 Before we submit the job, run this command to make sure that prokka is setup properly in your environment.
 
 ```
-prokka –setupdb
+prokka -setupdb
 ```
 
 In your day2am directory, you will find a prokka.sbat script. Open this file using nano and change the EMAIL_ADDRESS to your email address.
