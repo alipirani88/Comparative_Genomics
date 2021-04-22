@@ -234,11 +234,14 @@ annots_mlst = read.table('~/Desktop/micro612/day2pm/kpneumo_mlst.tsv',row.names=
 #make sure order of genomes is the same as source annotation
 annots_mlst$ST = annots_mlst[row.names(annots),]
 
+#paste together annotations
+Row_annotations <- cbind(annots, annots_mlst) 
+
 #change from numeric to character, so that heatmap doesn't treat ST as continuous variable
 Row_annotations$ST = as.character(Row_annotations$ST)
 
-#paste together annotations
-Row_annotations <- cbind(annots, annots_mlst) 
+# Assign colors to Sequence Types
+annoCol <- list(ST=c(“11”=“blue”, “221”=“red”, “230”=“orange”, “258”=“grey”))
 
 #create new heatmap with source and mlst
 pheatmap(ariba_full_match,annotation_row = Row_annotations, annotation_colors = annoCol)
