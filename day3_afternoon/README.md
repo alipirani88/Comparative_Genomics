@@ -218,7 +218,7 @@ The positions of variants are embedded in the second column of core.tab, but you
 ```
 
 - Finally, download this file, read it into R using ‘read.table’ and use ‘hist’ to plot a histogram of these core positions
-- Do you observe clustering of variants that would be indicative of recombination? #Doubt: No clustering since they are only core variants and High Quality as compared to Spandx
+- Do you observe clustering of variants that would be indicative of recombination? 
 
 
 > ***ii. Create a neighboring-joining tree from core SNP alignment in R***
