@@ -197,7 +197,6 @@ Use less to look at this file and then apply unix commands to extract and sort i
 **HINTS**
 The following unix commands can be used to get sorted list of number of VARIANT and number of ALIGNED bases: tail, cut, sort
 
-> ***ii. Add in another exercise here to explore either core.vcf or generate a file that looks like SPANDx's All_SNPs_annotated.txt***
 
 
 Recombination detection and tree generation
